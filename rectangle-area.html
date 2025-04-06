@@ -3,64 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diện tích hình chữ nhật</title>
-  <script src="Jquery.js"></script>
-  <script>
-    $(document).ready(function(){
-      $("#btnCalculateArea").on("click", function(){
-        var length = parseInt($("#inputLength").val());
-        var width = parseInt($("#inputWidth").val());
-
-        // Kiểm tra giá trị nhập vào
-        if (isNaN(length) || isNaN(width)) {
-          alert("Vui lòng nhập đúng số cho chiều dài và chiều rộng.");
-          return;
-        }
-
-        var area = length * width;
-        $("#outputArea").val(area).css("background", "#ddd");
-      });
-    });
-  </script>
-
+  <title>Form Template</title>
   <style>
-    table {
-      border: 1px solid black;
-      margin: 0 auto;
-      background-color: #fcebca;
-      border-collapse: collapse;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      padding: 30px;
     }
-    th, td {
+
+    .centered-table {
+      margin: auto;
+      background-color: #fffef2;
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+      width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .centered-table th {
+      background-color: #ffe08a;
+      color: #874f00;
+      font-size: 18px;
+      padding: 10px;
+    }
+
+    .centered-table td {
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .form-input {
+      width: 100%;
       padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      padding: 8px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background-color: #ffb84d;
+      color: #4e2c00;
+    }
+
+    .primary-btn:hover {
+      background-color: #ffa726;
     }
   </style>
 </head>
 <body>
-  <table id="tableRectangleArea">
+
+  <table class="centered-table">
     <thead>
-      <tr style="background-color: #f8cc69; color: #a55715;">
+      <tr>
         <th colspan="2">DIỆN TÍCH HÌNH CHỮ NHẬT</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Chiều dài:</td>
-        <td><input type="text" id="inputLength"></td>
+        <td><input id="inputLength" class="form-input" type="text"></td>
       </tr>
       <tr>
         <td>Chiều rộng:</td>
-        <td><input type="text" id="inputWidth"></td>
+        <td><input id="inputWidth" class="form-input" type="text"></td>
       </tr>
       <tr>
         <td>Diện tích:</td>
-        <td><input type="text" id="outputArea" readonly></td>
+        <td><input id="outputArea" class="form-input" type="text" readonly></td>
       </tr>
       <tr>
         <td colspan="2" style="text-align: center;">
-          <button id="btnCalculateArea">Tính</button>
+          <button id="btnCalculateArea" class="btn primary-btn">Tính</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <script src="Jquery.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#btnCalculateArea").on("click", function(){
+        var length = parseFloat($("#inputLength").val());
+        var width = parseFloat($("#inputWidth").val());
+
+        if (isNaN(length) || isNaN(width)) {
+          alert("Vui lòng nhập số hợp lệ.");
+          return;
+        }
+
+        var area = length * width;
+        $("#outputArea").val(area).css("background", "#f0f0f0");
+      });
+    });
+  </script>
+
 </body>
 </html>
