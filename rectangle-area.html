@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diện tích hình chữ nhật</title>
+  <script src="Jquery.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#btnCalculateArea").on("click", function(){
+        var length = parseInt($("#inputLength").val());
+        var width = parseInt($("#inputWidth").val());
+
+        // Kiểm tra giá trị nhập vào
+        if (isNaN(length) || isNaN(width)) {
+          alert("Vui lòng nhập đúng số cho chiều dài và chiều rộng.");
+          return;
+        }
+
+        var area = length * width;
+        $("#outputArea").val(area).css("background", "#ddd");
+      });
+    });
+  </script>
+
+  <style>
+    table {
+      border: 1px solid black;
+      margin: 0 auto;
+      background-color: #fcebca;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <table id="tableRectangleArea">
+    <thead>
+      <tr style="background-color: #f8cc69; color: #a55715;">
+        <th colspan="2">DIỆN TÍCH HÌNH CHỮ NHẬT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Chiều dài:</td>
+        <td><input type="text" id="inputLength"></td>
+      </tr>
+      <tr>
+        <td>Chiều rộng:</td>
+        <td><input type="text" id="inputWidth"></td>
+      </tr>
+      <tr>
+        <td>Diện tích:</td>
+        <td><input type="text" id="outputArea" readonly></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <button id="btnCalculateArea">Tính</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
